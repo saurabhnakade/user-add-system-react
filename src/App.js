@@ -11,10 +11,15 @@ function App() {
     setUsers(p=>[...p,data])
   }
 
+  const delUserHandler=(key)=>{
+    const newA=users.filter(u=>u.key!=key);
+    setUsers([...newA]);
+  }
+
   return (
     <div>
       <AddUser onAddUser={addUserHandler}/>
-      <UsersList users={users}/>
+      <UsersList onDelete={(key)=>delUserHandler(key)} users={users}/>
     </div>
   );
 }
